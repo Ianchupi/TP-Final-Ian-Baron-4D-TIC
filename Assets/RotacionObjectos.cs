@@ -11,7 +11,8 @@ public class RotacionObjectos : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        DesactivarTodosObjetos();
+       
     }
 
     // Update is called once per frame
@@ -20,30 +21,15 @@ public class RotacionObjectos : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
-            if (CurrentObjectIndex == objects.Length + 1)
-            {
-
-            }
-            else
-            {
-                objects[CurrentObjectIndex].SetActive(false);
-                CurrentObjectIndex++;
-                objects[CurrentObjectIndex].SetActive(true);
-            }
+            ActivarNextObject();
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if ((Input.GetKeyDown(KeyCode.RightArrow)))
         {
-            objects[CurrentObjectIndex].SetActive(false);
-            if (CurrentObjectIndex == -1)
-            {
-                CurrentObjectIndex = objects.Length;
-            }
-            else
-            {
-                CurrentObjectIndex--;
-                objects[CurrentObjectIndex].SetActive(false);
-            }
+            ActivarAntObject();
         }
+        
+           
+        
     }
 
 
@@ -65,10 +51,6 @@ public class RotacionObjectos : MonoBehaviour
     }
     public void ActivarAntObject()
     {
-
-
-      
-
 
         CurrentObjectIndex--;
         if (CurrentObjectIndex < 0)
